@@ -1522,13 +1522,11 @@ func (c *Client) call(
 		}
 	}
 
-	c.logger.Debugf("%s", (*requestOutDump)(req))
 	res, err := c.http.Do(req)
 	if err != nil {
 		return nil, err
 	}
 	defer res.Body.Close()
-	c.logger.Debugf("%s", (*responseDump)(res))
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
